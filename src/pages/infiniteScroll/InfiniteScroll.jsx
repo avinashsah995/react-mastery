@@ -1,14 +1,11 @@
-import { motion } from "motion/react";
+import ComingSoon from "../../components/ComingSoon";
 
 const InfiniteScroll = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-        >
-            <h2>Infinite Scroll Page</h2>
-        </motion.div>
+        <ComingSoon
+            title="Infinite Scroll"
+            description="We are currently building a seamless infinite scroll experience. Check back soon!"
+        />
     );
 };
 

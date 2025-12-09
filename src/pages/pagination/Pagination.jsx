@@ -1,14 +1,11 @@
-import { motion } from "motion/react";
+import ComingSoon from "../../components/ComingSoon";
 
 const Pagination = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-        >
-            <h2>Pagination Page</h2>
-        </motion.div>
+        <ComingSoon
+            title="Pagination"
+            description="Advanced pagination patterns and techniques are under development. Coming soon!"
+        />
     );
 };
 

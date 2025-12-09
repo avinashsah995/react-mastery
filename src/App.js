@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Pagination from "./pages/pagination/Pagination";
+import InfiniteScroll from "./pages/infiniteScroll/InfiniteScroll";
+import PerformanceTips from "./pages/performanceTips/PerformanceTips";
+import Virtualization from "./pages/virtualization/Virtualization";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pagination" element={<Pagination />} />
+        <Route path="/infinite-scroll" element={<InfiniteScroll />} />
+        <Route path="/performance-tips" element={<PerformanceTips />} />
+        <Route path="/virtualization" element={<Virtualization />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

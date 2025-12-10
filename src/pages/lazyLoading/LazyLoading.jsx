@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaImage, FaArrowDown } from "react-icons/fa";

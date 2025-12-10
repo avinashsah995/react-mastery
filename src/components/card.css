@@ -56,3 +56,54 @@
     margin-bottom: 8px;
     color: var(--primary-color);
 }
+
+/* Coming Soon Styles */
+.coming-soon-card {
+    opacity: 0.6;
+    filter: grayscale(0.3);
+    position: relative;
+}
+
+.coming-soon-card:hover {
+    opacity: 0.75;
+}
+
+.coming-soon-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+.coming-soon-card .card-icon {
+    opacity: 0.7;
+}
+
+.coming-soon-card h3,
+.coming-soon-card p {
+    opacity: 0.8;
+}

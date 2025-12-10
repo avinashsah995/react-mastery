@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaImages, FaCompress, FaRocket } from "react-icons/fa";
+import { FaImages, FaCompress } from "react-icons/fa";
 import "./image-optimization.css";
 
 const ImageOptimization = () => {

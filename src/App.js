@@ -19,6 +19,30 @@ import DebounceThrottle from "./pages/debounceThrottle/DebounceThrottle";
 import LazyLoading from "./pages/lazyLoading/LazyLoading";
 import Memoization from "./pages/memoization/Memoization";
 import WebWorkers from "./pages/webWorkers/WebWorkers";
+
+// New pages
+import GPUAcceleration from "./pages/gpuAcceleration/GPUAcceleration";
+import ViewTransitions from "./pages/viewTransitions/ViewTransitions";
+import Suspense from "./pages/suspense/Suspense";
+import WASM from "./pages/wasm/WASM";
+import IdleCallback from "./pages/idleCallback/IdleCallback";
+import Bundling from "./pages/bundling/Bundling";
+import DependencySize from "./pages/dependencySize/DependencySize";
+import APIPerformance from "./pages/apiPerformance/APIPerformance";
+import Prefetching from "./pages/prefetching/Prefetching";
+import RenderBlocking from "./pages/renderBlocking/RenderBlocking";
+import FontOptimization from "./pages/fontOptimization/FontOptimization";
+import CriticalCSS from "./pages/criticalCSS/CriticalCSS";
+import Caching from "./pages/caching/Caching";
+import ServiceWorkers from "./pages/serviceWorkers/ServiceWorkers";
+import PWA from "./pages/pwa/PWA";
+import MemoryLeaks from "./pages/memoryLeaks/MemoryLeaks";
+import LongTasks from "./pages/longTasks/LongTasks";
+import PerformanceMonitoring from "./pages/performanceMonitoring/PerformanceMonitoring";
+import WebVitals from "./pages/webVitals/WebVitals";
+import ReactProfiler from "./pages/reactProfiler/ReactProfiler";
+import Lighthouse from "./pages/lighthouse/Lighthouse";
+
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -45,6 +69,29 @@ function App() {
         <Route path="/lazy-loading" element={<LazyLoading />} />
         <Route path="/memoization" element={<Memoization />} />
         <Route path="/web-workers" element={<WebWorkers />} />
+
+        {/* New Routes */}
+        <Route path="/gpu-acceleration" element={<GPUAcceleration />} />
+        <Route path="/view-transitions" element={<ViewTransitions />} />
+        <Route path="/suspense" element={<Suspense />} />
+        <Route path="/wasm" element={<WASM />} />
+        <Route path="/idle-callback" element={<IdleCallback />} />
+        <Route path="/bundling" element={<Bundling />} />
+        <Route path="/dependency-size" element={<DependencySize />} />
+        <Route path="/api-performance" element={<APIPerformance />} />
+        <Route path="/prefetching" element={<Prefetching />} />
+        <Route path="/render-blocking" element={<RenderBlocking />} />
+        <Route path="/font-optimization" element={<FontOptimization />} />
+        <Route path="/critical-css" element={<CriticalCSS />} />
+        <Route path="/caching" element={<Caching />} />
+        <Route path="/service-workers" element={<ServiceWorkers />} />
+        <Route path="/pwa" element={<PWA />} />
+        <Route path="/memory-leaks" element={<MemoryLeaks />} />
+        <Route path="/long-tasks" element={<LongTasks />} />
+        <Route path="/performance-monitoring" element={<PerformanceMonitoring />} />
+        <Route path="/web-vitals" element={<WebVitals />} />
+        <Route path="/react-profiler" element={<ReactProfiler />} />
+        <Route path="/lighthouse" element={<Lighthouse />} />
       </Routes>
     </BrowserRouter>
   );

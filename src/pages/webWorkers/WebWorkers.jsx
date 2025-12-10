@@ -1,68 +1,196 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaCog, FaExclamationTriangle, FaCheckCircle } from "react-icons/fa";
 import "./web-workers.css";
 
 const WebWorkers = () => {
-    const [mainThreadResult, setMainThreadResult] = useState("Click to calculate");
-    const [workerResult, setWorkerResult] = useState("Click to calculate");
     const [mainThreadStatus, setMainThreadStatus] = useState("ready");
     const [workerStatus, setWorkerStatus] = useState("ready");
+    const [mainThreadTime, setMainThreadTime] = useState(null);
+    const [workerTime, setWorkerTime] = useState(null);
 
-    // Heavy computation - find nth prime number
-    const findNthPrime = (n) => {
-        let count = 0;
-        let num = 2;
-        while (count < n) {
-            let isPrime = true;
-            for (let i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i === 0) {
-                    isPrime = false;
-                    break;
-                }
+    const mainCanvasRef = useRef(null);
+    const workerCanvasRef = useRef(null);
+    const originalImageDataRef = useRef(null);
+
+    // Generate a colorful pattern on canvas
+    useEffect(() => {
+        const generateImage = (canvas) => {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Create a gradient background
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(0.5, '#764ba2');
+            gradient.addColorStop(1, '#f093fb');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // Add some shapes
+            for (let i = 0; i < 20; i++) {
+                ctx.fillStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.6)`;
+                ctx.beginPath();
+                ctx.arc(
+                    Math.random() * width,
+                    Math.random() * height,
+                    20 + Math.random() * 40,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.fill();
             }
-            if (isPrime) count++;
-            if (count < n) num++;
+
+            // Add text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sample Image', width / 2, height / 2);
+        };
+
+        if (mainCanvasRef.current && workerCanvasRef.current) {
+            generateImage(mainCanvasRef.current);
+            generateImage(workerCanvasRef.current);
+
+            // Store original image data
+            const ctx = mainCanvasRef.current.getContext('2d');
+            originalImageDataRef.current = ctx.getImageData(
+                0, 0,
+                mainCanvasRef.current.width,
+                mainCanvasRef.current.height
+            );
         }
-        return num;
+    }, []);
+
+    // Reset canvas to original image
+    const resetCanvas = (canvas) => {
+        if (originalImageDataRef.current) {
+            const ctx = canvas.getContext('2d');
+            ctx.putImageData(originalImageDataRef.current, 0, 0);
+        }
     };
 
-    const handleMainThreadCalculation = () => {
-        setMainThreadStatus("computing");
-        setMainThreadResult("Computing...");
+    // Apply blur filter (CPU intensive operation)
+    const applyBlur = (imageData, radius = 5) => {
+        const pixels = imageData.data;
+        const width = imageData.width;
+        const height = imageData.height;
+        const output = new Uint8ClampedArray(pixels);
 
-        // Force a synchronous render before blocking
-        setTimeout(() => {
-            // This BLOCKS the main thread synchronously!
-            const result = findNthPrime(500000);
-            setMainThreadResult(`${result.toLocaleString()}`);
-            setMainThreadStatus("ready");
-        }, 100); // Small delay to let UI update first
-    };
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                let r = 0, g = 0, b = 0, count = 0;
 
-    const handleWorkerCalculation = () => {
-        setWorkerStatus("computing");
-        setWorkerResult("Computing...");
+                for (let ky = -radius; ky <= radius; ky++) {
+                    for (let kx = -radius; kx <= radius; kx++) {
+                        const px = x + kx;
+                        const py = y + ky;
 
-        // Create inline worker using Blob
-        const workerCode = `
-            self.onmessage = function(e) {
-                const n = e.data;
-                let count = 0;
-                let num = 2;
-                while (count < n) {
-                    let isPrime = true;
-                    for (let i = 2; i <= Math.sqrt(num); i++) {
-                        if (num % i === 0) {
-                            isPrime = false;
-                            break;
+                        if (px >= 0 && px < width && py >= 0 && py < height) {
+                            const idx = (py * width + px) * 4;
+                            r += pixels[idx];
+                            g += pixels[idx + 1];
+                            b += pixels[idx + 2];
+                            count++;
                         }
                     }
-                    if (isPrime) count++;
-                    if (count < n) num++;
                 }
-                self.postMessage(num);
+
+                const idx = (y * width + x) * 4;
+                output[idx] = r / count;
+                output[idx + 1] = g / count;
+                output[idx + 2] = b / count;
+            }
+        }
+
+        for (let i = 0; i < pixels.length; i++) {
+            imageData.data[i] = output[i];
+        }
+
+        return imageData;
+    };
+
+    const handleMainThreadProcessing = () => {
+        setMainThreadStatus("processing");
+        setMainThreadTime(null);
+        resetCanvas(mainCanvasRef.current);
+
+        const startTime = performance.now();
+
+        // Small timeout to allow UI to update
+        setTimeout(() => {
+            const ctx = mainCanvasRef.current.getContext('2d');
+            const imageData = ctx.getImageData(
+                0, 0,
+                mainCanvasRef.current.width,
+                mainCanvasRef.current.height
+            );
+
+            // This BLOCKS the main thread!
+            const blurred = applyBlur(imageData, 8);
+            ctx.putImageData(blurred, 0, 0);
+
+            const endTime = performance.now();
+            setMainThreadTime(Math.round(endTime - startTime));
+            setMainThreadStatus("ready");
+        }, 50);
+    };
+
+    const handleWorkerProcessing = () => {
+        setWorkerStatus("processing");
+        setWorkerTime(null);
+        resetCanvas(workerCanvasRef.current);
+
+        const startTime = performance.now();
+        const ctx = workerCanvasRef.current.getContext('2d');
+        const imageData = ctx.getImageData(
+            0, 0,
+            workerCanvasRef.current.width,
+            workerCanvasRef.current.height
+        );
+
+        // Create inline worker
+        const workerCode = `
+            self.onmessage = function(e) {
+                const { imageData, radius } = e.data;
+                const pixels = imageData.data;
+                const width = imageData.width;
+                const height = imageData.height;
+                const output = new Uint8ClampedArray(pixels);
+
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        let r = 0, g = 0, b = 0, count = 0;
+
+                        for (let ky = -radius; ky <= radius; ky++) {
+                            for (let kx = -radius; kx <= radius; kx++) {
+                                const px = x + kx;
+                                const py = y + ky;
+
+                                if (px >= 0 && px < width && py >= 0 && py < height) {
+                                    const idx = (py * width + px) * 4;
+                                    r += pixels[idx];
+                                    g += pixels[idx + 1];
+                                    b += pixels[idx + 2];
+                                    count++;
+                                }
+                            }
+                        }
+
+                        const idx = (y * width + x) * 4;
+                        output[idx] = r / count;
+                        output[idx + 1] = g / count;
+                        output[idx + 2] = b / count;
+                    }
+                }
+
+                for (let i = 0; i < pixels.length; i++) {
+                    imageData.data[i] = output[i];
+                }
+
+                self.postMessage({ imageData });
             };
         `;
 
@@ -70,12 +198,14 @@ const WebWorkers = () => {
         const worker = new Worker(URL.createObjectURL(blob));
 
         worker.onmessage = (e) => {
-            setWorkerResult(`${e.data.toLocaleString()}`);
+            ctx.putImageData(e.data.imageData, 0, 0);
+            const endTime = performance.now();
+            setWorkerTime(Math.round(endTime - startTime));
             setWorkerStatus("ready");
             worker.terminate();
         };
 
-        worker.postMessage(500000);
+        worker.postMessage({ imageData, radius: 8 });
     };
 
     const benefits = [
@@ -172,8 +302,12 @@ const WebWorkers = () => {
             </motion.div>
 
             <h3 style={{ color: 'var(--text-color)', marginBottom: '16px' }}>
-                🎯 Interactive Demo: Prime Number Calculator
+                🎯 Interactive Demo: Image Blur Filter
             </h3>
+            <p style={{ color: '#94a3b8', marginBottom: '24px', fontSize: '0.95rem' }}>
+                Try clicking the buttons below and notice the animated box. The main thread version will freeze the UI,
+                while the Web Worker keeps everything smooth!
+            </p>
 
             <div className="demo-comparison">
                 <motion.div
@@ -187,31 +321,42 @@ const WebWorkers = () => {
                         Main Thread (UI Freezes)
                     </div>
 
+                    <div className="canvas-container">
+                        <canvas
+                            ref={mainCanvasRef}
+                            width="300"
+                            height="200"
+                            className="image-canvas"
+                        />
+                    </div>
+
                     <div className="control-section">
                         <button
                             className="calc-button"
-                            onClick={handleMainThreadCalculation}
-                            disabled={mainThreadStatus === "computing"}
+                            onClick={handleMainThreadProcessing}
+                            disabled={mainThreadStatus === "processing"}
                         >
-                            {mainThreadStatus === "computing" ? "Computing..." : "Calculate 500,000th Prime"}
+                            {mainThreadStatus === "processing" ? "Applying Filter..." : "Apply Blur Filter"}
                         </button>
                     </div>
 
                     <div className="ui-test">
                         <div className="ui-test-label">
-                            UI Responsiveness Test (try clicking while computing):
+                            UI Test (try hovering while processing):
                         </div>
                         <div className="animated-box">
-                            Animated Box
+                            Hover Me!
                         </div>
                     </div>
 
                     <div className="result-panel">
-                        <div className="result-label">Result:</div>
-                        <div className="result-value">{mainThreadResult}</div>
+                        <div className="result-label">Processing Time:</div>
+                        <div className="result-value">
+                            {mainThreadTime ? `${mainThreadTime}ms` : "—"}
+                        </div>
                         <div className={`status-indicator ${mainThreadStatus}`}>
                             <span className={`status-dot ${mainThreadStatus}`}></span>
-                            {mainThreadStatus === "computing" ? "UI Frozen!" : "Ready"}
+                            {mainThreadStatus === "processing" ? "UI Frozen! 🔴" : "Ready ✅"}
                         </div>
                     </div>
                 </motion.div>
@@ -227,31 +372,42 @@ const WebWorkers = () => {
                         Web Worker (UI Stays Responsive)
                     </div>
 
+                    <div className="canvas-container">
+                        <canvas
+                            ref={workerCanvasRef}
+                            width="300"
+                            height="200"
+                            className="image-canvas"
+                        />
+                    </div>
+
                     <div className="control-section">
                         <button
                             className="calc-button worker-btn"
-                            onClick={handleWorkerCalculation}
-                            disabled={workerStatus === "computing"}
+                            onClick={handleWorkerProcessing}
+                            disabled={workerStatus === "processing"}
                         >
-                            {workerStatus === "computing" ? "Computing..." : "Calculate 500,000th Prime"}
+                            {workerStatus === "processing" ? "Applying Filter..." : "Apply Blur Filter"}
                         </button>
                     </div>
 
                     <div className="ui-test">
                         <div className="ui-test-label">
-                            UI Responsiveness Test (animation continues):
+                            UI Test (animation continues smoothly):
                         </div>
                         <div className="animated-box">
-                            Animated Box
+                            Hover Me!
                         </div>
                     </div>
 
                     <div className="result-panel">
-                        <div className="result-label">Result:</div>
-                        <div className="result-value">{workerResult}</div>
+                        <div className="result-label">Processing Time:</div>
+                        <div className="result-value">
+                            {workerTime ? `${workerTime}ms` : "—"}
+                        </div>
                         <div className={`status-indicator ${workerStatus}`}>
                             <span className={`status-dot ${workerStatus}`}></span>
-                            {workerStatus === "computing" ? "Computing in Background" : "Ready"}
+                            {workerStatus === "processing" ? "Computing in Background 🟢" : "Ready ✅"}
                         </div>
                     </div>
                 </motion.div>

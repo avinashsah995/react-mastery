@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaGlobeAmericas, FaRocket, FaShieldAlt } from "react-icons/fa";
+import { FaGlobeAmericas, FaRocket } from "react-icons/fa";
 import "./cdn-usage.css";
 
 const CDNUsage = () => {

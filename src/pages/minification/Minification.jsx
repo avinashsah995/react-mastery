@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaCompressArrowsAlt, FaFileCode, FaRocket, FaCog, FaTools } from "react-icons/fa";
+import { FaCompressArrowsAlt, FaTools } from "react-icons/fa";
 import "./minification.css";
 
 const Minification = () => {

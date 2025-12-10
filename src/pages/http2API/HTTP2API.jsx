@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaNetworkWired, FaRocket } from "react-icons/fa";
+import { FaNetworkWired } from "react-icons/fa";
 import "./http2-api.css";
 
 const HTTP2API = () => {

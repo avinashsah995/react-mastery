@@ -120,6 +120,22 @@
     box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
 }
 
+.canvas-container {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+}
+
+.image-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .ui-test {
     margin-bottom: 20px;
     padding: 16px;
@@ -143,20 +159,16 @@
     justify-content: center;
     color: white;
     font-weight: 600;
-    animation: slide 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-@keyframes slide {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    50% {
-        transform: translateX(calc(100% - 120px));
-    }
+.animated-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
 }
+
 
 .result-panel {
     padding: 16px;
@@ -189,7 +201,7 @@
     margin-top: 12px;
 }
 
-.status-indicator.computing {
+.status-indicator.processing {
     color: #eab308;
 }
 
@@ -207,7 +219,7 @@
     border-radius: 50%;
 }
 
-.status-dot.computing {
+.status-dot.processing {
     background: #eab308;
     animation: pulse-status 1.5s ease-in-out infinite;
 }

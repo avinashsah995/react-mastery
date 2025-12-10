@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaBolt, FaCheckCircle } from "react-icons/fa";
+import { FaBolt } from "react-icons/fa";
 import "./preloading.css";
 
 const Preloading = () => {

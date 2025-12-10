@@ -1,0 +1,322 @@
+.memoization-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.memoization-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    border-radius: 0 0 16px 16px;
+}
+
+.memo-intro {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.memo-intro h3 {
+    color: var(--text-color);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.memo-intro p {
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.interactive-demo-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.demo-controls-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .demo-controls-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.demo-panel {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.demo-panel.without-memo {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.demo-panel.with-memo {
+    border-color: rgba(217, 70, 239, 0.3);
+}
+
+.panel-title {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-label {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.number-input {
+    width: 100%;
+    padding: 10px;
+    background: #1e293b;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.number-input:focus {
+    outline: none;
+    border-color: rgba(217, 70, 239, 0.5);
+    box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.1);
+}
+
+.result-display {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.result-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.result-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+.performance-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.stat-badge {
+    flex: 1;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.stat-number.slow {
+    color: #ef4444;
+}
+
+.stat-number.fast {
+    color: #d946ef;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+.hooks-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.hook-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.hook-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(217, 70, 239, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hook-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.hook-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-family: 'Fira Code', monospace;
+}
+
+.hook-description {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.code-sample {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: #d946ef;
+    overflow-x: auto;
+}
+
+.use-cases-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.use-case-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.use-case-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(217, 70, 239, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.use-case-emoji {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.use-case-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.use-case-text {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.metric-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(to right, #d946ef, #f0abfc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.metric-description {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.calculation-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: rgba(217, 70, 239, 0.1);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #d946ef;
+    margin-top: 8px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: #d946ef;
+    border-radius: 50%;
+    animation: pulse-animation 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-animation {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}

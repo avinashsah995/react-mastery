@@ -1,0 +1,272 @@
+.tree-shaking-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.tree-shaking-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    border-radius: 0 0 16px 16px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.info-card h3 {
+    color: var(--text-color);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+.comparison-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .comparison-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.comparison-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.comparison-card.bad {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.comparison-card.good {
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.comparison-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.comparison-badge.bad {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.comparison-badge.good {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.comparison-card h4 {
+    color: var(--text-color);
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.code-example {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+    border: 1px solid var(--card-border);
+    margin-bottom: 16px;
+}
+
+.code-example code {
+    color: #e2e8f0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+.code-example .keyword {
+    color: #c792ea;
+}
+
+.code-example .function {
+    color: #82aaff;
+}
+
+.code-example .string {
+    color: #c3e88d;
+}
+
+.code-example .comment {
+    color: #546e7a;
+}
+
+.code-example .bad-text {
+    color: #ef4444;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.code-example .good-text {
+    color: #22c55e;
+}
+
+.bundle-size {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.bundle-size-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bundle-size-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.bundle-size-fill.bad {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.bundle-size-fill.good {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.bundle-size-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.tip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 197, 94, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tip-card h5 {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tip-card p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.tree-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    margin-top: 16px;
+}
+
+.tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.tree-node-box {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.tree-node-box.used {
+    background: rgba(34, 197, 94, 0.2);
+    border: 2px solid #22c55e;
+    color: #22c55e;
+}
+
+.tree-node-box.unused {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px dashed rgba(239, 68, 68, 0.4);
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.tree-children {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    position: relative;
+}
+
+.tree-children::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    width: 2px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.2);
+}

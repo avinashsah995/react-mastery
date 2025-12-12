@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { FaReact } from "react-icons/fa";
 import "./header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -11,8 +12,10 @@ const Header = () => {
             transition={{ duration: 0.5 }}
         >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <FaReact size={30} color="#61DAFB" />
-                <h1>React Playground</h1>
+                <Link to="/" className="footer-logo">
+                    <FaReact size={30} color="#61DAFB" />
+                    <h1>React Playground</h1>
+                </Link>
             </div>
         </motion.header>
     );

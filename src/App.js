@@ -44,6 +44,9 @@ import ReactProfiler from "./pages/reactProfiler/ReactProfiler";
 import Lighthouse from "./pages/lighthouse/Lighthouse";
 
 import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
+
+import Explore from "./pages/explore/Explore";
 
 function App() {
   return (
@@ -51,6 +54,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
         <Route path="/pagination" element={<Pagination />} />
         <Route path="/infinite-scroll" element={<InfiniteScroll />} />
         <Route path="/performance-tips" element={<PerformanceTips />} />
@@ -93,6 +97,7 @@ function App() {
         <Route path="/react-profiler" element={<ReactProfiler />} />
         <Route path="/lighthouse" element={<Lighthouse />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

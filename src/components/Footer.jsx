@@ -31,7 +31,7 @@ export default function Footer() {
                             <a href="https://github.com/avinashsah995" target="_blank" rel="noopener noreferrer" className="footer-link">
                                 <FaGithub /> GitHub
                             </a>
-                            <a href="https://linkedin.com/in/avinash-sah" target="_blank" rel="noopener noreferrer" className="footer-link">
+                            <a href="https://www.linkedin.com/in/avinashsah995/" target="_blank" rel="noopener noreferrer" className="footer-link">
                                 <FaLinkedin /> LinkedIn
                             </a>
                         </div>

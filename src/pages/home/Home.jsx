@@ -91,11 +91,11 @@ const Home = () => {
                     }}
                 >
                     <div className="preview-item">
-                        <h3 style={{ fontSize: '2.5rem', color: '#3b82f6', margin: 0 }}>40+</h3>
+                        <h3 style={{ fontSize: '2.5rem', color: '#3b82f6', margin: 0 }}>60+</h3>
                         <p style={{ color: '#94a3b8', margin: '5px 0' }}>Advanced Topics</p>
                     </div>
                     <div className="preview-item">
-                        <h3 style={{ fontSize: '2.5rem', color: '#8b5cf6', margin: 0 }}>20+</h3>
+                        <h3 style={{ fontSize: '2.5rem', color: '#8b5cf6', margin: 0 }}>30+</h3>
                         <p style={{ color: '#94a3b8', margin: '5px 0' }}>Interactive Demos</p>
                     </div>
                     <div className="preview-item">

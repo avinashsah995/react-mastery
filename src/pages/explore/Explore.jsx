@@ -7,20 +7,25 @@ import "./explore.css";
 
 const Explore = () => {
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
-
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => setIsMenuOpen(prev => !prev);
+    const handleCategoryClick = (index) => {
+        setActiveCategoryIndex(index);
+        setIsMenuOpen(false);
+    };
     const activeCategory = categorizedFeatures[activeCategoryIndex];
 
     return (
         <>
-            <Header />
+            <Header onMenuToggle={toggleMenu} />
             <div className="explore-wrapper">
-                <aside className="explore-sidebar">
+                <aside className={`explore-sidebar ${isMenuOpen ? 'open' : ''}`}>
                     <h3 className="sidebar-title">Categories</h3>
                     {categorizedFeatures.map((group, index) => (
                         <div
                             key={index}
                             className={`category-item ${activeCategoryIndex === index ? 'active' : ''}`}
-                            onClick={() => setActiveCategoryIndex(index)}
+                            onClick={() => handleCategoryClick(index)}
                         >
                             <span>{group.category}</span>
                             <span className="category-count-badge">{group.features.length}</span>

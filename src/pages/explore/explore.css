@@ -118,17 +118,34 @@
     }
 
     .explore-sidebar {
+        position: fixed;
+        top: 64px;
+        left: 0;
         width: 100%;
-        height: auto;
-        max-height: 200px;
+        height: calc(100vh - 64px);
+        max-height: none;
+        /* Override previous restriction */
+        background: #0f172a;
+        /* Solid background to cover content */
+        z-index: 50;
         border-right: none;
         border-bottom: 1px solid var(--card-border);
+        padding: 20px;
+        overflow-y: auto;
+
+        display: none;
+    }
+
+    .explore-sidebar.open {
+        display: flex;
     }
 
     .explore-content {
         overflow: visible;
     }
 }
+
+
 
 /* Custom Scrollbar for sidebar */
 .explore-sidebar::-webkit-scrollbar {

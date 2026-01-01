@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaSync, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "./minimise-rerenders.css";
 
@@ -80,26 +80,12 @@ const MinimiseReRenders = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="minimise-rerenders-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #0ea5e9, #38bdf8)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Minimise Re-renders
-                    </h2>
-                    <p className="header-subtitle">Optimize React performance by reducing unnecessary renders</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Minimise Re-renders"
+                subtitle="Optimize React performance by reducing unnecessary renders"
+                titleGradient="linear-gradient(to right, #0ea5e9, #38bdf8)"
+                className="minimise-rerenders-header"
+            />
 
             <motion.div
                 className="rerenders-intro"

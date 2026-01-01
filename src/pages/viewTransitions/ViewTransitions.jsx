@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { IoIosArrowBack, IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaExchangeAlt, FaImages, FaCode } from "react-icons/fa";
 import "./view-transitions.css";
 
@@ -21,26 +22,12 @@ const ViewTransitions = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="vt-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #8b5cf6, #d946ef)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        View Transitions API
-                    </h2>
-                    <p className="header-subtitle">Seamless state changes and shared element transitions</p>
-                </div>
-            </div>
+            <PageHeader
+                title="View Transitions API"
+                subtitle="Seamless state changes and shared element transitions"
+                titleGradient="linear-gradient(to right, #8b5cf6, #d946ef)"
+                className="vt-header"
+            />
 
             <motion.div
                 className="vt-intro"

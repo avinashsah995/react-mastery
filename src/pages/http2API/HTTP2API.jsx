@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaNetworkWired } from "react-icons/fa";
 import "./http2-api.css";
 
@@ -57,26 +57,12 @@ const HTTP2API = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="http2-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #8b5cf6, #a78bfa)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        HTTP/2 & API Optimization
-                    </h2>
-                    <p className="header-subtitle">Modern protocols for faster web applications</p>
-                </div>
-            </div>
+            <PageHeader
+                title="HTTP/2 & API Optimization"
+                subtitle="Modern protocols for faster web applications"
+                titleGradient="linear-gradient(to right, #8b5cf6, #a78bfa)"
+                className="http2-api-header"
+            />
 
             <motion.div
                 className="http2-intro"

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaGlobeAmericas, FaRocket } from "react-icons/fa";
 import "./cdn-usage.css";
 
@@ -66,26 +66,12 @@ const CDNUsage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="cdn-usage-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #06b6d4, #22d3ee)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        CDN Usage
-                    </h2>
-                    <p className="header-subtitle">Content Delivery Network for global performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="CDN Usage"
+                subtitle="Content Delivery Network for global performance"
+                titleGradient="linear-gradient(to right, #06b6d4, #22d3ee)"
+                className="cdn-usage-header"
+            />
 
             <motion.div
                 className="cdn-intro"

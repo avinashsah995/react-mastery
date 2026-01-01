@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react"; // Changed from "motion/react" to "framer-motion"
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaRocket, FaMicrochip, FaLayerGroup, FaExclamationTriangle } from "react-icons/fa";
 import "./gpu-acceleration.css";
 
@@ -70,26 +70,12 @@ const GPUAcceleration = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="gpu-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #f43f5e, #fb7185)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        GPU Acceleration
-                    </h2>
-                    <p className="header-subtitle">Supercharge rendering with hardware acceleration</p>
-                </div>
-            </div>
+            <PageHeader
+                title="GPU Acceleration"
+                subtitle="Supercharge rendering with hardware acceleration"
+                titleGradient="linear-gradient(to right, #f43f5e, #fb7185)"
+                className="gpu-header"
+            />
 
             <motion.div
                 className="gpu-intro"

@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { IoIosArrowBack, IoIosArrowForward, IoIosArrowBack as IoIosArrowBackIcon } from "react-icons/io";
-import { FaFileAlt } from "react-icons/fa";
+import PageHeader from "../../components/PageHeader";
 import "./pagination.css";
+import { FaFileAlt } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Pagination = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -110,26 +111,12 @@ const Pagination = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="pagination-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBackIcon />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #3b82f6, #60a5fa)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Pagination
-                    </h2>
-                    <p className="header-subtitle">Break large datasets into manageable pages</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Pagination"
+                subtitle="Break large datasets into manageable pages"
+                titleGradient="linear-gradient(to right, #3b82f6, #60a5fa)"
+                className="pagination-header"
+            />
 
             <motion.div
                 className="pagination-intro"

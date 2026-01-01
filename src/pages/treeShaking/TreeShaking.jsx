@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaTree, FaCheck, FaTimes, FaLeaf, FaCut, FaFileCode, FaBoxOpen } from "react-icons/fa";
 import "./tree-shaking.css";
 
@@ -34,26 +34,12 @@ const TreeShaking = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="tree-shaking-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #22c55e, #4ade80)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Tree Shaking
-                    </h2>
-                    <p className="header-subtitle">Eliminate dead code from your production bundle</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Tree Shaking"
+                subtitle="Eliminate dead code from your production bundle"
+                titleGradient="linear-gradient(to right, #22c55e, #4ade80)"
+                className="tree-shaking-header"
+            />
 
             <motion.div
                 className="info-card"

@@ -5,58 +5,7 @@
     min-height: 100vh;
 }
 
-.caching-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--card-border);
-    border-radius: 0 0 16px 16px;
-}
 
-.back-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--card-border);
-    color: var(--text-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-right: 20px;
-    font-size: 1.2rem;
-}
-
-.back-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-2px);
-}
-
-.header-content {
-    flex: 1;
-}
-
-.header-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.2;
-}
-
-.header-subtitle {
-    color: #94a3b8;
-    font-size: 0.9rem;
-    margin: 4px 0 0 0;
-}
 
 .caching-intro {
     background: var(--card-bg);

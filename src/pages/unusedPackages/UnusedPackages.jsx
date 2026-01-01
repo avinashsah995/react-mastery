@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaTrashAlt, FaSearch, FaExclamationTriangle, FaCheckCircle } from "react-icons/fa";
 import "./unused-packages.css";
 
@@ -76,26 +76,12 @@ const UnusedPackages = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="unused-packages-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #ef4444, #f87171)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Cleaning Unused Packages
-                    </h2>
-                    <p className="header-subtitle">Identify and remove dependencies you're not using</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Cleaning Unused Packages"
+                subtitle="Identify and remove dependencies you're not using"
+                titleGradient="linear-gradient(to right, #ef4444, #f87171)"
+                className="unused-packages-header"
+            />
 
             <motion.div
                 className="intro-section"

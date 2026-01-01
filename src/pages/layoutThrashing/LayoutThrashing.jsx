@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaExclamationTriangle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "./layout-thrashing.css";
 
@@ -57,26 +57,12 @@ const LayoutThrashing = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="layout-thrashing-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #f43f5e, #fb7185)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Layout Thrashing
-                    </h2>
-                    <p className="header-subtitle">Avoid forced synchronous layouts for better performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Layout Thrashing"
+                subtitle="Avoid forced synchronous layouts for better performance"
+                titleGradient="linear-gradient(to right, #f43f5e, #fb7185)"
+                className="layout-thrashing-header"
+            />
 
             <motion.div
                 className="thrashing-intro"

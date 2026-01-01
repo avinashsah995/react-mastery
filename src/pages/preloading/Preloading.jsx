@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaBolt } from "react-icons/fa";
 import "./preloading.css";
 
@@ -77,26 +77,12 @@ const Preloading = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="preloading-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #f97316, #fb923c)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Preloading & Resource Hints
-                    </h2>
-                    <p className="header-subtitle">Load critical resources faster with browser hints</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Preloading & Resource Hints"
+                subtitle="Load critical resources faster with browser hints"
+                titleGradient="linear-gradient(to right, #f97316, #fb923c)"
+                className="preloading-header"
+            />
 
             <motion.div
                 className="preload-intro"

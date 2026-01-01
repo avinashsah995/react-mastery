@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import React, { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { IoIosArrowBack } from "react-icons/io";
-import { FaList } from "react-icons/fa";
+import PageHeader from "../../components/PageHeader";
 import "./virtualization.css";
+import { FaList } from "react-icons/fa";
 
 const Virtualization = () => {
     const parentRef = useRef(null);
@@ -77,26 +77,12 @@ const Virtualization = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="virtualization-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #3b82f6, #8b5cf6)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Virtualization
-                    </h2>
-                    <p className="header-subtitle">Render large lists efficiently by showing only visible items</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Virtualization"
+                subtitle="Render large lists efficiently by showing only visible items"
+                titleGradient="linear-gradient(to right, #3b82f6, #8b5cf6)"
+                className="virtualization-header"
+            />
 
             <motion.div
                 className="virtualization-intro"

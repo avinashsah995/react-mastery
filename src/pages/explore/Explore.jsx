@@ -19,7 +19,32 @@ const Explore = () => {
         <>
             <Header onMenuToggle={toggleMenu} />
             <div className="explore-wrapper">
-                <aside className={`explore-sidebar ${isMenuOpen ? 'open' : ''}`}>
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.aside
+                            className="explore-sidebar mobile-only"
+                            initial={{ x: "-100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "-100%" }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        >
+                            <h3 className="sidebar-title">Categories</h3>
+                            {categorizedFeatures.map((group, index) => (
+                                <div
+                                    key={index}
+                                    className={`category-item ${activeCategoryIndex === index ? 'active' : ''}`}
+                                    onClick={() => handleCategoryClick(index)}
+                                >
+                                    <span>{group.category}</span>
+                                    <span className="category-count-badge">{group.features.length}</span>
+                                </div>
+                            ))}
+                        </motion.aside>
+                    )}
+                </AnimatePresence>
+
+                {/* Desktop Sidebar (hidden on mobile) */}
+                <aside className="explore-sidebar desktop-only">
                     <h3 className="sidebar-title">Categories</h3>
                     {categorizedFeatures.map((group, index) => (
                         <div

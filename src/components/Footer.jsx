@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaReact, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaReact, FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa';
 import './Footer.css';
 
 export default function Footer() {
@@ -33,6 +33,9 @@ export default function Footer() {
                             </a>
                             <a href="https://www.linkedin.com/in/avinashsah995/" target="_blank" rel="noopener noreferrer" className="footer-link">
                                 <FaLinkedin /> LinkedIn
+                            </a>
+                            <a href="https://avinash-sah.netlify.app/" target="_blank" rel="noopener noreferrer" className="footer-link">
+                                <FaGlobe /> Portfolio
                             </a>
                         </div>
                     </div>

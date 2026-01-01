@@ -1,95 +1,143 @@
 .home-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 2rem;
+    padding-bottom: 60px;
 }
 
 .hero-section {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
 }
 
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-gradient-text {
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     color: #94a3b8;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     line-height: 1.6;
 }
 
-.home-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    margin-bottom: 3rem;
-}
-
-.category-section {
-    margin-bottom: 3rem;
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.cta-button {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    borderRadius: 50px;
     cursor: pointer;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 2rem;
-    transition: all 0.3s ease;
-    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+    border-radius: 50px;
 }
 
-.category-header:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-    border-color: rgba(139, 92, 246, 0.3);
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+.features-preview {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.category-title {
-    font-size: 1.75rem;
+.preview-item {
+    text-align: center;
+}
+
+.preview-number {
+    font-size: 2.5rem;
     font-weight: 700;
     margin: 0;
-    color: #e2e8f0;
-    letter-spacing: -0.01em;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
 }
 
-.category-count {
-    font-size: 1rem;
-    font-weight: 500;
+.preview-label {
     color: #94a3b8;
-    background: rgba(148, 163, 184, 0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+    margin: 5px 0;
+    font-size: 0.9rem;
 }
 
-.collapse-icon {
-    font-size: 1.25rem;
+.color-blue {
+    color: #3b82f6;
+}
+
+.color-purple {
     color: #8b5cf6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
 }
 
-.category-section:last-child .home-container {
-    margin-bottom: 0;
+.color-green {
+    color: #10b981;
+}
+
+@media (max-width: 768px) {
+    .home-wrapper {
+        padding-top: 4rem;
+        justify-content: flex-start;
+    }
+
+    .hero-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 30px;
+    }
+
+    .cta-button {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    .features-preview {
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .preview-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .features-preview {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

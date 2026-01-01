@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import {
     FaDatabase, FaClock, FaNetworkWired, FaRocket,
     FaSync, FaServer, FaGlobe, FaShoppingCart,
@@ -145,26 +145,12 @@ const Caching = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="caching-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #3b82f6, #6366f1)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Caching Strategies
-                    </h2>
-                    <p className="header-subtitle">Boost performance with smart browser-level caching</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Caching Strategies"
+                subtitle="Boost performance with smart browser-level caching"
+                titleGradient="linear-gradient(to right, #3b82f6, #6366f1)"
+                className="caching-header"
+            />
 
             <motion.div
                 className="caching-intro"

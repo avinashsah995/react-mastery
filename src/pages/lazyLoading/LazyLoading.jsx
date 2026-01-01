@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaImage, FaArrowDown } from "react-icons/fa";
 import "./lazy-loading.css";
 
@@ -68,26 +68,12 @@ const LazyLoading = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="lazy-loading-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #10b981, #22c55e)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Lazy Loading
-                    </h2>
-                    <p className="header-subtitle">Load resources only when they're needed</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Lazy Loading"
+                subtitle="Load resources only when they're needed"
+                titleGradient="linear-gradient(to right, #10b981, #22c55e)"
+                className="lazy-loading-header"
+            />
 
             <motion.div
                 className="lazy-intro"

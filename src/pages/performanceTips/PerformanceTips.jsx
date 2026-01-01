@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import "./performance-tips.css";
 
 const PerformanceTips = () => {
@@ -10,26 +10,12 @@ const PerformanceTips = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="performance-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #10b981, #34d399)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Performance Playbook
-                    </h2>
-                    <p className="header-subtitle">Essential tips for optimizing frontend performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Performance Playbook"
+                subtitle="Essential tips for optimizing frontend performance"
+                titleGradient="linear-gradient(to right, #10b981, #34d399)"
+                className="performance-header"
+            />
 
             <motion.div
                 className="pdf-container"

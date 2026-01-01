@@ -110,38 +110,58 @@
     }
 }
 
+.desktop-only {
+    display: flex;
+}
+
+.mobile-only {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: flex;
+    }
+
     .explore-wrapper {
         flex-direction: column;
         height: auto;
         overflow: visible;
     }
 
-    .explore-sidebar {
+    .explore-sidebar.mobile-only {
         position: fixed;
         top: 64px;
         left: 0;
         width: 100%;
         height: calc(100vh - 64px);
-        max-height: none;
-        /* Override previous restriction */
         background: #0f172a;
-        /* Solid background to cover content */
-        z-index: 50;
+        z-index: 100;
+        padding: 24px;
         border-right: none;
         border-bottom: 1px solid var(--card-border);
-        padding: 20px;
         overflow-y: auto;
-
-        display: none;
-    }
-
-    .explore-sidebar.open {
-        display: flex;
     }
 
     .explore-content {
+        padding: 20px;
         overflow: visible;
+    }
+
+    .content-title {
+        font-size: 1.4rem;
+    }
+
+    .content-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .features-grid {
+        gap: 16px;
     }
 }
 

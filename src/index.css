@@ -60,3 +60,99 @@ code {
   scrollbar-width: thin;
   scrollbar-color: #3b82f6 rgba(15, 23, 42, 0.6);
 }
+
+/* Global Header Styles */
+.common-header,
+.virtualization-header,
+.gpu-header,
+.caching-header,
+.pagination-header,
+.cdn-usage-header,
+.layout-thrashing-header,
+.lazy-loading-header,
+.web-workers-header,
+.minimise-rerenders-header,
+.http2-api-header,
+.view-transitions-header,
+.memoization-header,
+.infinite-scroll-header,
+.performance-tips-header,
+.minification-header,
+.image-optimization-header,
+.unused-packages-header,
+.tree-shaking-header,
+.preloading-header,
+.code-splitting-header,
+.debounce-throttle-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  border-radius: 0 0 16px 16px;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--text-color);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.header-content {
+  flex: 1;
+}
+
+.header-title {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  color: #94a3b8;
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .back-button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    margin-right: 6px;
+    margin-left: 6px;
+  }
+}

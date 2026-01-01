@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaSpinner, FaCode, FaRocket, FaBox } from "react-icons/fa";
 import "./code-splitting.css";
 
@@ -47,26 +47,12 @@ const CodeSplitting = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="code-splitting-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #6366f1, #8b5cf6)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Code Splitting
-                    </h2>
-                    <p className="header-subtitle">Load components on demand to improve performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Code Splitting"
+                subtitle="Load components on demand to improve performance"
+                titleGradient="linear-gradient(to right, #6366f1, #8b5cf6)"
+                className="code-splitting-header"
+            />
 
             <motion.div
                 className="intro-card"

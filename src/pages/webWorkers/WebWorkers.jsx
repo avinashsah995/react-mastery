@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaCog, FaExclamationTriangle, FaCheckCircle } from "react-icons/fa";
 import "./web-workers.css";
 
@@ -261,26 +261,12 @@ const WebWorkers = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="web-workers-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #22c55e, #4ade80)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Web Workers
-                    </h2>
-                    <p className="header-subtitle">Run scripts in background threads for better performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Web Workers"
+                subtitle="Run scripts in background threads for better performance"
+                titleGradient="linear-gradient(to right, #22c55e, #4ade80)"
+                className="web-workers-header"
+            />
 
             <motion.div
                 className="workers-intro"

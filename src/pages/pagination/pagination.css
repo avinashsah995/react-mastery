@@ -7,20 +7,6 @@
     flex-direction: column;
 }
 
-.pagination-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--card-border);
-    border-radius: 0 0 16px 16px;
-}
 
 .pagination-content {
     flex: 1;

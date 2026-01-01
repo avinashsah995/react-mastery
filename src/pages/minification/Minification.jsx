@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaCompressArrowsAlt, FaTools } from "react-icons/fa";
 import "./minification.css";
 
@@ -65,26 +65,12 @@ export { calculateTotalPrice };`;
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="minification-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #eab308, #fbbf24)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Minification & Compression
-                    </h2>
-                    <p className="header-subtitle">Reduce file size by removing unnecessary characters</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Minification & Compression"
+                subtitle="Reduce file size by removing unnecessary characters"
+                titleGradient="linear-gradient(to right, #eab308, #fbbf24)"
+                className="minification-header"
+            />
 
             <motion.div
                 className="explanation-card"

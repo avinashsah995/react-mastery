@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaBrain, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 import "./memoization.css";
 
@@ -95,26 +95,12 @@ const Memoization = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="memoization-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #d946ef, #f0abfc)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Memoization
-                    </h2>
-                    <p className="header-subtitle">Cache expensive computations for better performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Memoization"
+                subtitle="Cache expensive computations for better performance"
+                titleGradient="linear-gradient(to right, #d946ef, #f0abfc)"
+                className="memoization-header"
+            />
 
             <motion.div
                 className="memo-intro"

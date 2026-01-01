@@ -3,7 +3,7 @@ import { FaReact, FaBars } from "react-icons/fa";
 import "./header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ onMenuToggle }) => {
+const Header = ({ onMenuToggle, showHamburger = true }) => {
     return (
         <motion.header
             className="header"
@@ -17,9 +17,11 @@ const Header = ({ onMenuToggle }) => {
                     <h1>React Playground</h1>
                 </Link>
             </div>
-            <button className="hamburger-btn" onClick={onMenuToggle} aria-label="Menu">
-                <FaBars size={24} />
-            </button>
+            {showHamburger && (
+                <button className="hamburger-btn" onClick={onMenuToggle} aria-label="Menu">
+                    <FaBars size={24} />
+                </button>
+            )}
         </motion.header>
     );
 };

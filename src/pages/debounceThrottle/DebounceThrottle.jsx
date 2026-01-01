@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaClock, FaSearch } from "react-icons/fa";
 import "./debounce-throttle.css";
 
@@ -89,26 +89,12 @@ const DebounceThrottle = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="debounce-throttle-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #a855f7, #3b82f6)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Debounce & Throttle
-                    </h2>
-                    <p className="header-subtitle">Control function execution rate for better performance</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Debounce & Throttle"
+                subtitle="Control function execution rate for better performance"
+                titleGradient="linear-gradient(to right, #a855f7, #3b82f6)"
+                className="debounce-throttle-header"
+            />
 
             <motion.div
                 className="dt-intro"

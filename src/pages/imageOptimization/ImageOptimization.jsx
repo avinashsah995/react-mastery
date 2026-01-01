@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { IoIosArrowBack } from "react-icons/io";
+import PageHeader from "../../components/PageHeader";
 import { FaImages, FaCompress } from "react-icons/fa";
 import "./image-optimization.css";
 
@@ -80,26 +80,12 @@ const ImageOptimization = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="image-optimization-header">
-                <button
-                    className="back-button"
-                    onClick={() => window.history.back()}
-                    aria-label="Go back"
-                >
-                    <IoIosArrowBack />
-                </button>
-                <div className="header-content">
-                    <h2 className="header-title" style={{
-                        background: "linear-gradient(to right, #ec4899, #f472b6)",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}>
-                        Image Optimization
-                    </h2>
-                    <p className="header-subtitle">Compress and optimize images for faster load times</p>
-                </div>
-            </div>
+            <PageHeader
+                title="Image Optimization"
+                subtitle="Compress and optimize images for faster load times"
+                titleGradient="linear-gradient(to right, #ec4899, #f472b6)"
+                className="image-optimization-header"
+            />
 
             <motion.div
                 className="intro-content"
